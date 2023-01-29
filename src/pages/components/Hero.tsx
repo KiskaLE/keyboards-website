@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { type NextComponentType } from "next";
 import { useEffect } from 'react';
 

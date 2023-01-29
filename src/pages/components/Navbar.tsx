@@ -18,7 +18,7 @@ const Navbar: NextComponentType = () => {
 
   return (
     <>
-      <nav className="bg-black text-white">
+      <nav className="bg-black text-white z-50">
         <div className="flex items-center justify-between px-10 py-2">
           <h1 className="">Logo</h1>
           <div className="flex gap-5">
