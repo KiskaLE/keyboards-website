@@ -1,11 +1,21 @@
-import { type NextComponentType } from "next";
+import type { NextComponentType } from "next";
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import type { NavLink, NavUl } from "../../types/types";
 import { AiOutlineUser, AiOutlineSearch } from "react-icons/ai";
 import { SlBasketLoaded } from "react-icons/sl";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 const Navbar: NextComponentType = () => {
   const iconsSize = 30;
+  const route = useRouter();
+  let currentPage = route.pathname;
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    currentPage = route.pathname;
+  }, [route.pathname]);
+
   return (
     <>
       <nav className="bg-black text-white">
@@ -17,47 +27,41 @@ const Navbar: NextComponentType = () => {
             <SlBasketLoaded size={iconsSize} />
           </div>
         </div>
-        <ul className=" flex w-screen border-b-2 border-black px-5 py-2">
-          <Link className="pr-3" href="/">
+        <ul className=" flex w-screen  px-5 py-2">
+          <NavLink href="/" currentPage={currentPage}>
             Home
-          </Link>
+          </NavLink>
           <NavUl title="Shop">
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>Restock</Link>
-            <Link href={""}>PCB</Link>
-            <Link href={""}>Case</Link>
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
+            <Link href={"/shop/new-arrivals"}>New Arrival</Link>
+            <Link href={"/shop/restock"}>Restock</Link>
+            <Link href={"/shop/pcb"}>PCB</Link>
+            <Link href={"/shop/case"}>Case</Link>
           </NavUl>
-          <NavUl title="Keyboard Category">
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-          </NavUl>
-          <NavUl title="Group Buy">
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-          </NavUl>
-          <NavUl title="Ready To Use">
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-            <Link href={""}>New Arrival</Link>
-          </NavUl>
+          <NavUl title="Keyboard Category"></NavUl>
+          <NavUl title="Group Buy"></NavUl>
+          <NavUl title="Ready To Use"></NavUl>
         </ul>
       </nav>
     </>
   );
 };
 
-const NavUl = ({ children, title }: any) => {
+const NavLink = ({ children, href, currentPage }: NavLink) => {
+  return (
+    <>
+      <Link
+        className={`${
+          currentPage === href ? "border-white" : "border-black"
+        } border-b-2 px-3 duration-300 hover:border-white  `}
+        href={href}
+      >
+        {children}
+      </Link>
+    </>
+  );
+};
+
+const NavUl = ({ children, title }: NavUl) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
