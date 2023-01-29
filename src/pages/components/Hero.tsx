@@ -43,7 +43,7 @@ const Hero: NextComponentType = () => {
 
   return (
     <>
-      <div className="flex min-h-screen w-screen overflow-hidden bg-black">
+      <div className="flex -z-1 min-h-screen w-screen overflow-hidden bg-black">
         <div
           className={`flex flex-row transition-all duration-500 ease-in-out`}
           id="slide"
@@ -51,8 +51,8 @@ const Hero: NextComponentType = () => {
           {testImages.map((image) => {
             return (
               <>
-                <div className="w-[100vw]">
-                  <img className="w-full" src={image.src} alt="image" />
+                <div className="w-[100vw] -z-50">
+                  <img className="w-full -z-50" src={image.src} alt="image" />
                 </div>
               </>
             );
