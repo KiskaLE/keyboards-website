@@ -64,3 +64,9 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model HeroProduct { 
+    id String @id @default(uuid())
+    name String
+    src String
+}
