@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { type NextComponentType } from "next";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 const Hero: NextComponentType = () => {
   const testImages = [
@@ -14,36 +14,37 @@ const Hero: NextComponentType = () => {
       src: "/images/3.webp",
     },
   ];
- let translateValue = 0;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  let translateValue = 0;
   useEffect(() => {
-    let image = 0
+    let image = 0;
     console.log("ahoj");
-    
+
     const interval = setInterval(() => {
-      translateValue = image*100;
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      translateValue = image * 100;
       console.log("test");
-      
-      if (image >= testImages.length-1) {
+
+      if (image >= testImages.length - 1) {
         image = 0;
-      }else {
+      } else {
         image++;
       }
-        const slide = document.getElementById("slide");
-        if (slide != null) {
-          slide.style.transform = `translate(-${window.innerWidth*image}px)`;
-        }
-      
+      const slide = document.getElementById("slide");
+      if (slide != null) {
+        slide.style.transform = `translate(-${window.innerWidth * image}px)`;
+      }
     }, 5000);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  return () => {
-    clearInterval(interval)
-  }
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (
     <>
-      <div className="flex -z-1 min-h-screen w-screen overflow-hidden bg-black">
+      <div className="-z-1 flex min-h-screen w-screen overflow-hidden bg-black">
         <div
           className={`flex flex-row transition-all duration-500 ease-in-out`}
           id="slide"
@@ -51,8 +52,8 @@ const Hero: NextComponentType = () => {
           {testImages.map((image) => {
             return (
               <>
-                <div className="w-[100vw] -z-50">
-                  <img className="w-full -z-50" src={image.src} alt="image" />
+                <div className="-z-50 w-[100vw]">
+                  <img className="-z-50 w-full" src={image.src} alt="image" />
                 </div>
               </>
             );
