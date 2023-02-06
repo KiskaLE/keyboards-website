@@ -46,7 +46,7 @@ const Hero: NextComponentType = () => {
     <>
       <div className="-z-1 flex min-h-screen w-screen overflow-hidden bg-black">
         <div
-          className={`flex flex-row transition-all duration-500 ease-in-out`}
+          className={`flex translate-x-0 flex-row transition-all duration-500 ease-in-out`}
           id="slide"
         >
           {testImages.map((image) => {

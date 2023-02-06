@@ -18,16 +18,19 @@ const Navbar: NextComponentType = () => {
 
   return (
     <>
-      <nav className="bg-black text-white z-50">
-        <div className="flex items-center justify-between z-50 px-10 py-2">
+      <nav className="z-50 bg-black text-white">
+        <div className="z-50 flex items-center justify-between px-10 py-2">
           <h1 className="">Logo</h1>
           <div className="flex gap-5">
             <AiOutlineSearch size={iconsSize} />
-            <AiOutlineUser size={iconsSize} />
+            <Link href={"/login"}>
+              <AiOutlineUser size={iconsSize} />
+            </Link>
+
             <SlBasketLoaded size={iconsSize} />
           </div>
         </div>
-        <ul className=" flex w-screen z-50  px-5 py-2">
+        <ul className=" z-50 flex w-screen  px-5 py-2">
           <NavLink href="/" currentPage={currentPage}>
             Home
           </NavLink>
@@ -52,7 +55,7 @@ const NavLink = ({ children, href, currentPage }: NavLink) => {
       <Link
         className={`${
           currentPage === href ? "border-white" : "border-black"
-        } border-b-2 px-3 duration-300 hover:border-white z-50 `}
+        } z-50 border-b-2 px-3 duration-300 hover:border-white `}
         href={href}
       >
         {children}
@@ -73,7 +76,7 @@ const NavUl = ({ children, title }: NavUl) => {
         <p
           className={`${
             isOpen ? "border-white" : "border-transparent"
-          } w-fit border-b-2 px-3 pb-2 duration-300 z-50`}
+          } z-50 w-fit border-b-2 px-3 pb-2 duration-300`}
         >
           {title} ▼
         </p>
@@ -81,7 +84,7 @@ const NavUl = ({ children, title }: NavUl) => {
           <div
             className={`${
               isOpen ? "visible" : "hidden"
-            } relative flex w-52 flex-col border-b-2 border-white  bg-black py-5 z-50 pl-3`}
+            } relative z-50 flex w-52 flex-col border-b-2  border-white bg-black py-5 pl-3`}
           >
             {children}
           </div>
